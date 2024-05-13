@@ -1,6 +1,7 @@
-import '@styles/globals.css';
+import "@styles/globals.css";
 // import Provider from "@components/Provider";
 import Favicon from "../public/assets/images/logo.svg";
+import Nav from "@components/Nav";
 
 export const metadata = {
   title: "PromptHub",
@@ -13,15 +14,15 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       {/* putting everyting inside of body is must */}
       {/* <Provider> */}
-        <body>
-          <div className="main">
-            <div className="gradient"></div>
-          </div>
-          <main className="app">
-            {/* <Nav /> */}
-            {children}
-          </main>
-        </body>
+      <body>
+        <div className="main">
+          <div className="gradient"></div>
+        </div>
+        <main className="app">
+          <Nav />
+          {children}
+        </main>
+      </body>
       {/* </Provider> */}
     </html>
   );
