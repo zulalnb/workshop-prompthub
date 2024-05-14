@@ -1,6 +1,6 @@
 import "@styles/globals.css";
-// import Provider from "@components/Provider";
 import Favicon from "../public/assets/images/logo.svg";
+import Provider from "@components/Provider";
 import Nav from "@components/Nav";
 
 export const metadata = {
@@ -13,17 +13,17 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       {/* putting everyting inside of body is must */}
-      {/* <Provider> */}
-      <body>
-        <div className="main">
-          <div className="gradient"></div>
-        </div>
-        <main className="app">
-          <Nav />
-          {children}
-        </main>
-      </body>
-      {/* </Provider> */}
+      <Provider>
+        <body>
+          <div className="main">
+            <div className="gradient"></div>
+          </div>
+          <main className="app">
+            <Nav />
+            {children}
+          </main>
+        </body>
+      </Provider>
     </html>
   );
 };
