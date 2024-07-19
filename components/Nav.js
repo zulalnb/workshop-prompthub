@@ -7,8 +7,6 @@ import { getProviders, signIn, useSession } from "next-auth/react";
 const Nav = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
-
-  const isUserLoggedIn = false;
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   const handleProviders = async () => {
@@ -33,9 +31,15 @@ const Nav = () => {
       </Link>
       {/* desktop nav */}
       <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create-post">Create Post</Link>
+            <Link
+              href="/create-prompt"
+              className="black_btn"
+              onClick={() => {}}
+            >
+              Create Prompt
+            </Link>
             <button
               onClick={() => {
                 console.log("sign out");
@@ -49,7 +53,7 @@ const Nav = () => {
                 width={37}
                 height={37}
                 alt="logo"
-                src="/assets/images/logo.svg"
+                src={session?.user.image}
                 className="rounded-full"
               />
             </Link>
@@ -72,13 +76,13 @@ const Nav = () => {
       </div>
       {/* mobile nav */}
       <div className="sm:hidden flex relative">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex cursor-pointer">
             <Image
               width={37}
               height={37}
               alt="logo"
-              src="/assets/images/logo.svg"
+              src={session?.user.image}
               className="rounded-full"
               onClick={() => setToggleDropdown((prev) => !prev)}
             />
@@ -95,7 +99,9 @@ const Nav = () => {
                   href="/create-prompt"
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
-                ></Link>
+                >
+                  Create Prompt
+                </Link>
                 <button
                   type="button"
                   className="black_btn w-full text-center mt-5"

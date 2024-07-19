@@ -12,7 +12,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      {/* putting everyting inside of body is must */}
+      {/* putting everything inside of body is must */}
       <Provider>
         <body>
           <div className="main">

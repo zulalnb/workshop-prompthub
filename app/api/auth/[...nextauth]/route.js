@@ -12,11 +12,11 @@ const handler = NextAuth({
   ],
   callbacks: {
     async redirect({ url, baseUrl }) {
-      console.log(baseUrl);
+      return baseUrl;
     },
     async session({ session }) {
       const sessionUser = await User.findOne({ email: session.user.email });
-      session.user.id = sessionUser._id;
+      session.user.id = sessionUser?._id.toString();
       return session;
     },
     async signIn({ profile }) {
