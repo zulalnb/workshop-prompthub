@@ -26,10 +26,11 @@ const handler = NextAuth({
           email: profile.email,
         });
         if (!userAlreadyExists) {
+          console.log(profile);
           await User.create({
             email: profile.email,
-            username: profile.name,
-            image: profile.image,
+            username: profile.name.replace(" ", "").toLowerCase(),
+            image: profile.picture,
             prompts: [],
           });
         }

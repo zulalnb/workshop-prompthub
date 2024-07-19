@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getProviders, signIn, useSession } from "next-auth/react";
+import { getProviders, signIn, signOut, useSession } from "next-auth/react";
 
 const Nav = () => {
   const { data: session } = useSession();
@@ -40,12 +40,7 @@ const Nav = () => {
             >
               Create Prompt
             </Link>
-            <button
-              onClick={() => {
-                console.log("sign out");
-              }}
-              className="outline_btn"
-            >
+            <button onClick={signOut} className="outline_btn">
               Sign out
             </button>
             <Link href="/profile">
@@ -106,7 +101,7 @@ const Nav = () => {
                   type="button"
                   className="black_btn w-full text-center mt-5"
                   onClick={() => {
-                    console.log("sign out");
+                    signOut();
                     setToggleDropdown(false);
                   }}
                 >
